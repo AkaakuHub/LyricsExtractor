@@ -45,9 +45,6 @@ browser.runtime.onMessage.addListener(function (message) {
     if (message.action === "extractFunction") {
         extract();
     }
-    if (message.action === "contactFunction") {
-        alert("LyricsExtractor\n\nGoogle, J-Lyrics, Uta-net, KKBOXに対応しています。\nNow works with those above.\n\n連絡、バグ報告はこちらから/Contact\nhttps://github.com/AkaakuHub/LyricsExtractor");
-    }
 });
 // URLからHTMLを取得する関数
 async function fetchHTML(url) {
