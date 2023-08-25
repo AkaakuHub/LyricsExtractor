@@ -1,5 +1,3 @@
-const URLlist = ["https://www.google.com/", "https://www.uta-net.com/", "https://j-lyric.net/", "https://www.kkbox.com/"];
-// URLと対応する抽出情報をマップ化
 const eInfo = [
     {
         url: "https://www.google.com/",
@@ -40,8 +38,26 @@ const eInfo = [
         ],
     },
 ];
+let html = '';
+let eInfoItem = null;
+let loaded = false;
+window.onload = openFunction;
+function openFunction() {
+    loaded = true;
+    const url = window.location.href;
+    if (!url.includes("https://www.google.com/")) {
+        alert("歌詞が準備できました！\nLyrics are ready!");
+    }
+    eInfoItem = eInfo.find((item) => url.includes(item.url));
+    if (eInfoItem) {
+        html = fetchHTML(url);
+    } else {
+        alert('No extraction info found for this URL');
+        console.error('No extraction info found for this URL');
+    }
+}
 // メッセージを待ち受ける
-browser.runtime.onMessage.addListener(function (message) {
+chrome.runtime.onMessage.addListener(function (message) {
     if (message.action === "extractFunction") {
         extract();
     }
@@ -54,7 +70,7 @@ async function fetchHTML(url) {
             alert('Network response was not ok');
             throw new Error('Network response was not ok');
         }
-        const html = await response.text();
+        html = await response.text();
         return html;
     } catch (error) {
         alert('Fetch Error:', error);
@@ -84,24 +100,12 @@ function cut(text, s, e, d) {
     return extractedText;
 }
 function extract() {
-    const url = window.location.href;
-    if (!URLlist.some(word => url.includes(word))) {
-        alert("対応していないサイトです。\nThis site is not supported.");
+    if (loaded) {
+        let extractedText = cut(html, eInfoItem.s, eInfoItem.e, eInfoItem.d);
+        let popupL = window.open("", "_blank");
+        popupL.document.write(extractedText.replace(/\n/g, "<br>"));
     } else {
-        const eInfoItem = eInfo.find((item) => url.includes(item.url));
-        if (eInfoItem) {
-            fetchHTML(url)
-                .then((html) => {
-                    let extractedText = cut(html, eInfoItem.s, eInfoItem.e, eInfoItem.d);
-                    alert(extractedText);
-                })
-                .catch((error) => {
-                    alert(error);
-                    console.error(error);
-                });
-        } else {
-            alert('No extraction info found for this URL');
-            console.error('No extraction info found for this URL');
-        }
+        alert('ページがロードされるまでお待ちください。\nPlease wait until the page is loaded.');
+        console.log('Please wait until the page is loaded.');
     }
 }
