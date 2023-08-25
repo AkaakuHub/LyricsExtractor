@@ -1,3 +1,6 @@
+現在、**Google, J-Lyrics, Uta-net, KKBOXに対応しています。<br>
+Now works with those above.**
+
 # LyricsExtractor
 ページから歌詞を抽出します。 <br>
 Extract lyrics from web pages. This is only experimental purpose. available in Japanese/English.<br>
