@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "LyricsExtractor",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "歌詞を抽出します。\nExtract lyrics from web pages.",
     "author": "Akaaku",
     "homepage_url": "https://github.com/AkaakuHub/LyricsExtractor",
