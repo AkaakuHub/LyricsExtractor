@@ -45,9 +45,6 @@ window.onload = openFunction;
 function openFunction() {
     loaded = true;
     const url = window.location.href;
-    if (!url.includes("https://www.google.com/")) {
-        alert("歌詞が準備できました！\nLyrics are ready!");
-    }
     eInfoItem = eInfo.find((item) => url.includes(item.url));
     if (eInfoItem) {
         html = fetchHTML(url);
@@ -71,6 +68,9 @@ async function fetchHTML(url) {
             throw new Error('Network response was not ok');
         }
         html = await response.text();
+        if (!url.includes("https://www.google.com/") || html.includes('<div jsname="WbKHeb">')) {
+            alert("歌詞が準備できました！\nLyrics are ready!");
+        }
         return html;
     } catch (error) {
         alert('Fetch Error:', error);
@@ -101,9 +101,9 @@ function cut(text, s, e, d) {
 }
 function extract() {
     if (loaded) {
-        let extractedText = cut(html, eInfoItem.s, eInfoItem.e, eInfoItem.d);
+        let lyrics = cut(html, eInfoItem.s, eInfoItem.e, eInfoItem.d);
         let popupL = window.open("", "_blank");
-        popupL.document.write(extractedText.replace(/\n/g, "<br>"));
+        popupL.document.write(lyrics.replace(/\n/g, "<br>"));
     } else {
         alert('ページがロードされるまでお待ちください。\nPlease wait until the page is loaded.');
         console.log('Please wait until the page is loaded.');
