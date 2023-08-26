@@ -2,6 +2,9 @@
 ### Now works with those above.
 
 #
+著作権を侵害する意図はありません。
+I have no intention to infringe copyright.
+#
 
 # Download
 <ul>
