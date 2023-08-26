@@ -14,7 +14,7 @@ I have no intention to infringe copyright.
   </li>
   <li>
     Chrome(Chromium)<br>
-    Not available yet...
+    https://chrome.google.com/webstore/detail/lyricsextractor/dcokmmljclbpfmemfkmgeippnleipgeo
   </li>
 </ul>
 
