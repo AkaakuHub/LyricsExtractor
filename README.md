@@ -34,7 +34,7 @@ It uses only easy JavaScript and html, so you can confirm the safety of this cod
     拡張機能をインストールする
   </li>
   <li>
-    対応するページを開き、ページのロードが完了したら抽出ボタンを押す。(ロード完了時に通知が出ます。)
+    対応するページを開き、ページのロードが完了したら抽出ボタンを押す。
   </li>
   <li>
     新しいタブで歌詞が開かれます。
@@ -45,7 +45,7 @@ It uses only easy JavaScript and html, so you can confirm the safety of this cod
     Install extensions.
   </li>
   <li>
-    Open the page you want and press the extract button when the page finishes loading. (You will be notified when loading is complete.)
+    Open the page you want and press the extract button when the page finishes loading.
   </li>
   <li>
     The lyrics will appear in the new tab.
