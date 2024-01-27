@@ -1,0 +1,46 @@
+/* これがflexの親コンテナ */
+#LE_ButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 99999999;
+    opacity: 0;
+    transition: opacity 500ms 0s ease-in-out;
+}
+
+#LE_ButtonContainer.show {
+    opacity: 1;
+}
+
+.extractButton,
+.closeButton {
+    font-size: 2em;
+    color: #000;
+    background: linear-gradient(to left top, #b1aeed, #caf2ff);
+    border-right: 0.1em solid #969696;
+    border-bottom: 0.1em solid #969696;
+    text-align: center;
+    line-height: 2em;
+    /* 右上だけ*/
+    border-radius: 1em 0 0 0;
+    border: 2px solid black;
+    padding: 0.2em;
+    transition: all 500ms 0s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.closeButton {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.extractButton:hover,
+.closeButton:hover {
+    cursor: pointer;
+    background: linear-gradient(to left top, #9593c8, #abcad4);
+    transition: all 500ms 0s ease;
+}
