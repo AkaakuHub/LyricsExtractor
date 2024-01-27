@@ -1,4 +1,4 @@
-### 現在、Google, J-Lyrics, Uta-net, KKBOXに対応しています。<br>
+### 現在、Google, J-Lyrics, Uta-netに対応しています。<br>
 ### Now works with those above.
 
 #
