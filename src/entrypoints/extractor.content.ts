@@ -159,6 +159,12 @@ function main() {
 			return;
 		}
 		if (autoExtract === "true") {
+			// クエリパラメータを削除してURLを更新
+			urlParams.delete("auto_extract");
+			const newUrl = urlParams.toString()
+				? `${window.location.pathname}?${urlParams.toString()}`
+				: window.location.pathname;
+			history.replaceState({}, "", newUrl);
 			extract();
 			return;
 		}
