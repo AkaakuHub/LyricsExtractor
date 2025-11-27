@@ -41,6 +41,16 @@ const eInfo = [
 let html = "";
 let eInfoItem: (typeof eInfo)[0] | null = null;
 
+// HTMLエスケープ関数
+function escapeHtml(unsafe: string): string {
+	return unsafe
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;");
+}
+
 // 歌詞部分を抽出する関数
 function cut(
 	text: string,
@@ -84,15 +94,17 @@ function extract() {
 	}
 
 	const doc = popupL.document;
-	const content =
-		lyrics?.replace(/\n/g, "<br>") ?? "歌詞の抽出に失敗しました。";
+	const escapedTitle = escapeHtml(HTMLtitle);
+	const content = lyrics
+		? escapeHtml(lyrics).replace(/\n/g, "<br>")
+		: "歌詞の抽出に失敗しました。";
 	const htmlContent = `
     <!DOCTYPE html>
     <html lang="ja">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${HTMLtitle} - LyricsExtractor</title>
+        <title>${escapedTitle} - LyricsExtractor</title>
     </head>
     <body>
 		${content}
