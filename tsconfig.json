@@ -1,6 +1,7 @@
 {
-  "extends": "./.wxt/tsconfig.json",
-  "compilerOptions": {
-    "types": ["@types/node"]
-  }
+	"extends": "./.wxt/tsconfig.json",
+	"compilerOptions": {
+		"types": ["@types/node"]
+	},
+	"moduleResolution": "node"
 }
