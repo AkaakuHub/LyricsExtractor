@@ -16,9 +16,6 @@ export default defineConfig({
 	manifestVersion: 3,
 	manifest({ browser }) {
 		return {
-			name: "lyrics-extractor",
-			version: "2.1.0",
-			description: "対応サイトの歌詞だけを抜き出して見やすく表示します。",
 			icons: {
 				16: "/icons/icon16.png",
 				32: "/icons/icon32.png",

@@ -1,6 +1,6 @@
 {
 	"name": "lyrics-extractor",
-	"version": "2.1.0",
+	"version": "3.0.0",
 	"description": "対応サイトの歌詞だけを抽出して見やすく表示するブラウザ拡張",
 	"scripts": {
 		"dev": "wxt -b chromium",
@@ -9,8 +9,8 @@
 		"build:chromium": "wxt build -b chromium",
 		"build:firefox": "wxt build -b firefox",
 		"check": "wxt check",
-		"format": "biome format --fix",
-		"lint": "biome lint --fix",
+		"format": "biome format --fix ./src",
+		"lint": "biome lint --fix ./src",
 		"postinstall": "wxt prepare && lefthook install"
 	},
 	"repository": {
