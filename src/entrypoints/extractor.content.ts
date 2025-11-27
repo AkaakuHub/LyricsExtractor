@@ -1,5 +1,4 @@
 import { defineContentScript } from "wxt/utils/define-content-script";
-import { browser } from "wxt/browser";
 import "./extractor-style.css";
 
 const eInfo = [
@@ -114,12 +113,6 @@ export default defineContentScript({
 	main() {
 		main();
 		insertUi();
-
-		browser.runtime.onMessage.addListener((message) => {
-			if (message?.type !== "extract-lyrics") return;
-			extract();
-			return { ok: true };
-		});
 	},
 });
 

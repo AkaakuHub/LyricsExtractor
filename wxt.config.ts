@@ -19,9 +19,6 @@ export default defineConfig({
 			name: "lyrics-extractor",
 			version: "2.1.0",
 			description: "対応サイトの歌詞だけを抜き出して見やすく表示します。",
-			action: {
-				default_popup: "popup.html",
-			},
 			icons: {
 				16: "/icons/icon16.png",
 				32: "/icons/icon32.png",
