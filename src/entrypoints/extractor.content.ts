@@ -71,7 +71,11 @@ function cut(
 }
 
 function extract() {
-	const lyrics = cut(html, eInfoItem!.s, eInfoItem!.e, eInfoItem!.d);
+	if (!eInfoItem) {
+		console.error("LyricsExtractor: No extraction info available");
+		return;
+	}
+	const lyrics = cut(html, eInfoItem.s, eInfoItem.e, eInfoItem.d);
 	const HTMLtitle = document.title;
 	const popupL = window.open("", "_blank");
 
