@@ -1,0 +1,9 @@
+node_modules
+.wxt
+dist
+.output
+npm-debug.log*
+yarn.lock
+package-lock.json
+.pnp.*
+.DS_Store

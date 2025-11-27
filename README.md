@@ -1,81 +1,34 @@
-### 現在、Google, J-Lyrics, Uta-netに対応しています。<br>
-### Now works with those above.
+# LyricsExtractor (main 統合版)
 
-#
-著作権を侵害する意図はありません。
-I have no intention to infringe copyright.
-#
+対応サイトの歌詞だけを抽出してコピペしやすく表示するブラウザ拡張。旧 chrome/firefox ブランチの内容は WXT ベースで main にまとめました。
 
-# Download
-<ul>
-  <li>
-  Firefox<br>    
-    https://addons.mozilla.org/ja/firefox/addon/lyricsextractor/<br>
-  </li>
-  <li>
-    Chrome(Chromium)<br>
-    https://chrome.google.com/webstore/detail/lyricsextractor/dcokmmljclbpfmemfkmgeippnleipgeo
-  </li>
-</ul>
+## 対応サイト
+- Google 検索の歌詞カード
+- Uta-net
+- J-Lyric
+- KKBOX
 
-# LyricsExtractor
-コピー用の歌詞をページから抽出します。 <br>
-Extract lyrics to copy from web pages. This is only experimental purpose. available in Japanese/English.<br>
+## 使い方（開発/検証）
+1. Node.js 18+ を用意し、依存をインストールします。
+   ```bash
+   npm install
+   ```
+2. 開発サーバー
+   - Chrome/Chromium: `npm run dev`
+   - Firefox: `npm run dev:firefox`
+3. 本番ビルド
+   - Chrome/Chromium: `npm run build:chromium` → `.output/chromium-mv3`
+   - Firefox: `npm run build:firefox` → `.output/firefox-mv3`
+4. 各ブラウザの拡張読み込みで上記 dist ディレクトリを指定してください。
 
-指定したURLからHTMLを抽出し、必要な部分だけを表示する拡張機能です。<br>
-簡単なJavaScriptとhtmlのみで書いてあるので、コードの安全性を簡単に確認できます。<br>
-This extended function can extract html from specified url, and only show the part users want.<br>
-It uses only easy JavaScript and html, so you can confirm the safety of this code easily.<br>
+## 動作のシンプルな仕様
+- コンテンツスクリプトが対応ページを検知すると、右下に「歌詞を抽出」ボタンを出します。
+- ポップアップの「抽出 / Extract」を押すとアクティブタブで抽出が走り、新しいタブに歌詞を整形表示します。
 
+## 主なファイル
+- `entrypoints/extractor.content.ts`: 抽出ロジックとページ内ボタン
+- `entrypoints/popup.html`, `popup-script.ts`: ポップアップ UI とメッセージ送信
+- `wxt.config.ts`: Chrome/Firefox 向けの manifest を出し分け
 
-# How to use - Chrome(Chromium)
-<ol>
-  <li>
-    拡張機能をインストールする
-  </li>
-  <li>
-    対応するページを開き、ページのロードが完了したら抽出ボタンを押す。
-  </li>
-  <li>
-    新しいタブで歌詞が開かれます。
-  </li>
-</ol>
-<ol>
-  <li>
-    Install extensions.
-  </li>
-  <li>
-    Open the page you want and press the extract button when the page finishes loading.
-  </li>
-  <li>
-    The lyrics will appear in the new tab.
-  </li>
-</ol>
-
-# How to use - FireFox
-<ol>
-  <li>
-    拡張機能をインストールする
-  </li>
-  <li>
-    対応するページを開き、抽出ボタンを押す。
-  </li>
-  <li>
-    ポップアップに歌詞が表示されます。
-  </li>
-</ol>
-<ol>
-  <li>
-    Install extensions.
-  </li>
-  <li>
-    Open the page you want and press the extract button when the page finishes loading.
-  </li>
-  <li>
-    The lyrics will appear in the pop-up.
-  </li>
-</ol>
-
-# Advanced
-ブランチにChrome版とFireFox版があるのでパッケージとして導入する場合にお使いください。<br>
-There are Chrome version and FireFox version in the branch, so please use it when using it as a package.
+## ライセンス
+MIT
